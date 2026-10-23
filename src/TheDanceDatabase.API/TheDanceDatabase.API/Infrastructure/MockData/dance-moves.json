@@ -1,0 +1,170 @@
+{
+  "styles": [
+    {
+      "id": 1,
+      "name": "Shuffling",
+      "categories": [
+        {
+          "id": 1,
+          "name": "Pivoting",
+          "moves": [
+            { "id": 1, "name": "T-Step" },
+            { "id": 2, "name": "W-step" },
+            { "id": 3, "name": "Crab walk" },
+            { "id": 4, "name": "Charleston" },
+            { "id": 5, "name": "Mashed Potatoes" }
+          ]
+        },
+        {
+          "id": 2,
+          "name": "Running-Man",
+          "moves": [
+            { "id": 6, "name": "Standard running man" },
+            { "id": 7, "name": "Reverse running man" },
+            { "id": 8, "name": "Crossover running man", "notes": "polly-pocket" }
+          ]
+        },
+        {
+          "id": 3,
+          "name": "General",
+          "moves": [
+            { "id": 9, "name": "Spongebob" },
+            { "id": 10, "name": "Reverse Spongebob" },
+            { "id": 11, "name": "Butterfly footwork", "notes": "still a WIP" }
+          ]
+        },
+        {
+          "id": 4,
+          "name": "Shapes",
+          "moves": [
+            { "id": 12, "name": "Scissors" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "General Footwork",
+      "categories": [
+        {
+          "id": 5,
+          "name": "Footwork",
+          "moves": [
+            { "id": 13, "name": "Moonwalk" },
+            { "id": 14, "name": "Side glide" },
+            { "id": 15, "name": "4-step" },
+            { "id": 16, "name": "Spin!" },
+            { "id": 17, "name": "Happy Feet" },
+            { "id": 18, "name": "Criss Cross" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Waacking",
+      "categories": [
+        {
+          "id": 6,
+          "name": "Waacking",
+          "moves": [
+            { "id": 19, "name": "Single arm front, over head to back", "notes": "like a roll from the hips to back of head" },
+            { "id": 20, "name": "Alternating front, over head to back" },
+            { "id": 21, "name": "Cross body front, over head to back" },
+            { "id": 22, "name": "Side to back of head and back" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Hip Hop",
+      "categories": [
+        {
+          "id": 7,
+          "name": "Foot Work",
+          "moves": [
+            { "id": 23, "name": "Kickball change" },
+            { "id": 24, "name": "Knee tap to kick out", "notes": "similar to spongebob" }
+          ]
+        },
+        {
+          "id": 8,
+          "name": "Upper Body",
+          "moves": [
+            { "id": 25, "name": "Arm stance 8-combo" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Arms and Hands (General)",
+      "categories": [
+        {
+          "id": 9,
+          "name": "General",
+          "moves": [
+            { "id": 26, "name": "Arm Wave" },
+            { "id": 27, "name": "Flower" },
+            { "id": 28, "name": "Elbow Flower" }
+          ]
+        },
+        {
+          "id": 10,
+          "name": "Threading",
+          "moves": [
+            { "id": 29, "name": "Hand to head, pull arm through" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "B-boy/Floor Work",
+      "categories": [
+        {
+          "id": 11,
+          "name": "Top to Floor",
+          "moves": [
+            { "id": 30, "name": "Pin drop" },
+            { "id": 31, "name": "Sissy knee hang" },
+            { "id": 32, "name": "Knee slide" },
+            { "id": 33, "name": "Drop to floor with hands behind back and pop back up" },
+            { "id": 34, "name": "Dolphin dive" },
+            { "id": 35, "name": "Cross leg spin down", "notes": "can vary this with a kick out" }
+          ]
+        },
+        {
+          "id": 12,
+          "name": "Floor",
+          "moves": [
+            { "id": 36, "name": "Russian Hopak variation" },
+            { "id": 37, "name": "Worm" },
+            { "id": 38, "name": "Knee to knee clock rotation" },
+            { "id": 39, "name": "Frog stance" },
+            { "id": 40, "name": "Kip up" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Other Styles",
+      "categories": [
+        {
+          "id": 13,
+          "name": "Ballet",
+          "moves": [
+            { "id": 41, "name": "Pirouette" }
+          ]
+        },
+        {
+          "id": 14,
+          "name": "Tracing",
+          "moves": []
+        }
+      ]
+    }
+  ]
+}
