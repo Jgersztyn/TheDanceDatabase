@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/TheDanceDatabase.API/TheDanceDatabase.API.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/TheDanceDatabase.API.UnitTests/TheDanceDatabase.API.UnitTests.csproj" />
+  </Folder>
+</Solution>

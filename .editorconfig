@@ -1,0 +1,42 @@
+root = true
+
+# Scoped to .NET files so the UI keeps its own tooling defaults
+
+[*.cs]
+charset = utf-8
+indent_style = space
+indent_size = 4
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# Layout
+csharp_new_line_before_open_brace = all
+csharp_new_line_before_else = true
+csharp_new_line_before_catch = true
+csharp_new_line_before_finally = true
+csharp_style_namespace_declarations = file_scoped:warning
+csharp_prefer_braces = true:suggestion
+dotnet_sort_system_directives_first = false
+
+# Private static readonly fields are PascalCase, e.g. DanceTypes
+dotnet_naming_rule.private_static_readonly_fields_pascal.symbols = private_static_readonly_fields
+dotnet_naming_rule.private_static_readonly_fields_pascal.style = pascal_case
+dotnet_naming_rule.private_static_readonly_fields_pascal.severity = suggestion
+dotnet_naming_symbols.private_static_readonly_fields.applicable_kinds = field
+dotnet_naming_symbols.private_static_readonly_fields.applicable_accessibilities = private
+dotnet_naming_symbols.private_static_readonly_fields.required_modifiers = static, readonly
+
+# Other private fields are _camelCase, e.g. _logger
+dotnet_naming_rule.private_fields_underscore.symbols = private_fields
+dotnet_naming_rule.private_fields_underscore.style = underscore_camel_case
+dotnet_naming_rule.private_fields_underscore.severity = suggestion
+dotnet_naming_symbols.private_fields.applicable_kinds = field
+dotnet_naming_symbols.private_fields.applicable_accessibilities = private
+
+dotnet_naming_style.pascal_case.capitalization = pascal_case
+dotnet_naming_style.underscore_camel_case.capitalization = camel_case
+dotnet_naming_style.underscore_camel_case.required_prefix = _
+
+[*.{csproj,props,targets,slnx}]
+indent_style = space
+indent_size = 2
