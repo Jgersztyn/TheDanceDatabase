@@ -1,0 +1,20 @@
+# Runs the API and the UI in containers: docker compose up --build
+# Ports bind to 127.0.0.1 only, because the API runs in Development with Scalar exposed
+services:
+  api:
+    build:
+      context: src/TheDanceDatabase.API
+      dockerfile: TheDanceDatabase.API/Dockerfile
+    ports:
+      - "127.0.0.1:5185:8080"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      # Index 0 is the Vite dev server from appsettings.Development.json; this adds the ui container
+      CorsConfig__AllowedOrigins__1: http://localhost:8080
+
+  ui:
+    build:
+      context: src/TheDanceDatabase.UI
+      dockerfile: TheDanceDatabase.UI/Dockerfile
+    ports:
+      - "127.0.0.1:8080:8080"

@@ -1,0 +1,7 @@
+**/node_modules/
+**/dist/
+.vscode/
+TheDanceDatabase.UI.ComponentTests/
+
+# Vite reads .env.local files at build time; keep developer overrides out of the image
+**/*.local
