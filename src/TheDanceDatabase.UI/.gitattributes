@@ -1,0 +1,3 @@
+# Keep LF line endings on checkout so Prettier's default endOfLine ("lf") matches on every OS,
+# including Windows with core.autocrlf=true.
+* text=auto eol=lf
