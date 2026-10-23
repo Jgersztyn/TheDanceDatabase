@@ -6,14 +6,24 @@ A website that hosts custom made simfiles for StepMania and other rhythm games.
 
 ## API
 
-The API is an ASP.NET Core minimal API on .NET 10, in `src/TheDanceDatabase.API`. Its tests are in `tests/TheDanceDatabase.API.UnitTests`.
+The API is an ASP.NET Core minimal API on .NET 10. `src/TheDanceDatabase.API` is the .NET app's root folder:
 
 ```
-dotnet run --project src/TheDanceDatabase.API   # http://localhost:5185, API reference at /scalar
-dotnet test --solution TheDanceDatabase.slnx
+src/TheDanceDatabase.API/
+├── TheDanceDatabase.API.slnx
+├── global.json, Directory.Build.props, Directory.Packages.props, .editorconfig
+├── TheDanceDatabase.API/              # the API project
+└── TheDanceDatabase.API.UnitTests/    # its tests
 ```
 
-The code is organized in layers:
+Run the `dotnet` commands from `src/TheDanceDatabase.API`, so the SDK pinned in `global.json` is used:
+
+```
+dotnet run --project TheDanceDatabase.API   # http://localhost:5185, API reference at /scalar
+dotnet test --solution TheDanceDatabase.API.slnx
+```
+
+The API project's code is organized in layers:
 
 - `Application/`: service interfaces (`I*Service`) and inbound request models
 - `Domain/`: entities, enums and configuration classes (`Configuration/`)

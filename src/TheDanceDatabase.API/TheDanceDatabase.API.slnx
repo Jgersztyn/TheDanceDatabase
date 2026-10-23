@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="TheDanceDatabase.API/TheDanceDatabase.API.csproj" />
+  <Project Path="TheDanceDatabase.API.UnitTests/TheDanceDatabase.API.UnitTests.csproj" />
+</Solution>
