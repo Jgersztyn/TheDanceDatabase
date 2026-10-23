@@ -1,6 +1,6 @@
 # React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+This template provides a minimal setup to get React working in Vite with HMR, linted by ESLint and formatted by Prettier.
 
 Currently, two official plugins are available:
 
@@ -11,22 +11,27 @@ Currently, two official plugins are available:
 
 The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Expanding the Oxlint configuration
+## Scripts
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+Run `npm install` once, then:
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
-```
+| Command                | What it does                                        |
+| ---------------------- | --------------------------------------------------- |
+| `npm run dev`          | Start the dev server with hot reload                |
+| `npm run build`        | Type-check (`tsc -b`) and build to `dist/`          |
+| `npm run preview`      | Serve the production build locally                  |
+| `npm run lint`         | Lint with ESLint                                    |
+| `npm run format`       | Format every file with Prettier                     |
+| `npm run format:check` | Report files Prettier would change (use this in CI) |
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## Linting and formatting
+
+- **ESLint** (`eslint.config.js`) checks `.ts`/`.tsx` files with the recommended rules from `@eslint/js`, `typescript-eslint`, `eslint-plugin-react-hooks` and `eslint-plugin-react-refresh`. `eslint-config-prettier` is the last entry so ESLint never reports formatting; keep it last when adding configs.
+- **Prettier** (`.prettierrc`, `.prettierignore`) owns formatting. It is pinned to an exact version because even minor releases can change its output.
+- **Line endings:** `.gitattributes` keeps files as LF on checkout, so `format:check` passes on Windows even with `core.autocrlf=true`.
+
+For type-aware lint rules, replace `tseslint.configs.recommended` with `tseslint.configs.recommendedTypeChecked` and point the parser at the project's tsconfig files. See the [typescript-eslint docs](https://typescript-eslint.io/getting-started/typed-linting).
+
+## VS Code
+
+Open this folder (`src/TheDanceDatabase.UI`) as the workspace and install the recommended **ESLint** and **Prettier** extensions (VS Code prompts for them via `.vscode/extensions.json`). `.vscode/settings.json` formats on save with Prettier and applies ESLint fixes on save.
