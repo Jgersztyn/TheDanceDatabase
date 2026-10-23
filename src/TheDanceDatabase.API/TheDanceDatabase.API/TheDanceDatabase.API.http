@@ -1,0 +1,10 @@
+@HostAddress = http://localhost:5185
+
+GET {{HostAddress}}/dance-types
+Accept: application/json
+
+###
+
+GET {{HostAddress}}/health-check
+
+###
