@@ -6,7 +6,7 @@ namespace TheDanceDatabase.API.UnitTests;
 /// <summary>Hosts the API in memory with pinned settings, so tests never read developer-local files.</summary>
 public class TheDanceDatabaseApplicationFactory : WebApplicationFactory<Program>
 {
-    public const string AllowedOrigin = "http://localhost:3000";
+    public const string AllowedOrigin = "http://localhost:5173";
 
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
