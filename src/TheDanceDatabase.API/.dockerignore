@@ -1,0 +1,10 @@
+**/bin/
+**/obj/
+**/.vs/
+**/TestResults/
+**/.idea/
+**/.vscode/
+**/*.user
+
+# Git-ignored, but .gitignore does not bound a build context; keep developer overrides out of the image
+**/appsettings.Local.json
