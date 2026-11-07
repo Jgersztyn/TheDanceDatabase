@@ -11,6 +11,10 @@ public static class Endpoints
             .WithName(nameof(Functions.GetDanceTypes))
             .WithSummary("Retrieves every supported dance type.");
 
+        danceTypes.MapGet("search", Functions.SearchDanceTypes)
+            .WithName(nameof(Functions.SearchDanceTypes))
+            .WithSummary("Searches dance types by style, category and move name.");
+
         return app;
     }
 }

@@ -30,7 +30,7 @@ public static class DependencyInjection
         services.AddProblemDetails();
         services.AddHealthChecks();
 
-        // Serialize enums by name so callers receive "Latin" rather than 2
+        // Serialize any enum by name rather than by its number
         services.ConfigureHttpJsonOptions(options =>
             options.SerializerOptions.Converters.Add(new JsonStringEnumConverter()));
 
