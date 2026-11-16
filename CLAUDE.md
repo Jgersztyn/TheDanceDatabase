@@ -39,6 +39,8 @@ npm run format:check   # Prettier, reports only (the CI form)
 ```
 
 - **Pages:** React Router serves `/` (Home), `/search` (Dance Search) and `/about`, under a shared layout with a navigation toolbar at the top. The site uses a dark theme only.
+  - `/search` reads its starting filters from `?style=&category=&move=`. It reads them once, when the page opens, and does not write filter changes back to the URL.
+  - The example cards on `/about` link to `/search` with those parameters. `style` and `category` must match the database names exactly, or the dropdowns stay unselected.
 - **API URL:** the UI calls the API at `VITE_API_BASE_URL`, which defaults to `http://localhost:5185`. That default works for both `npm run dev` and Docker Compose.
 - **TypeScript only.** Source files are `.ts`/`.tsx`. The only JavaScript file is `eslint.config.js`.
 - **Linting is ESLint, not Oxlint.** create-vite defaults to Oxlint unless you pass `--eslint`. This project chose ESLint, so don't add Oxlint back. `eslint-config-prettier` must stay the last entry in `eslint.config.js`.

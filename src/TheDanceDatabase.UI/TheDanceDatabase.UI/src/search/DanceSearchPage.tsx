@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { useSearchParams } from 'react-router';
 import {
   apiBaseUrl,
   getDanceTypes,
@@ -29,8 +30,14 @@ function keyOf({ style, category, move }: DanceSearchCriteria): string {
 }
 
 function DanceSearchPage() {
-  const [filters, setFilters] = useState<DanceSearchCriteria>(noFilters);
-  const [debouncedMove, setDebouncedMove] = useState('');
+  // A link such as /search?style=Shuffling opens the page with those filters already set
+  const [searchParams] = useSearchParams();
+  const [filters, setFilters] = useState<DanceSearchCriteria>(() => ({
+    style: searchParams.get('style') ?? '',
+    category: searchParams.get('category') ?? '',
+    move: searchParams.get('move') ?? '',
+  }));
+  const [debouncedMove, setDebouncedMove] = useState(filters.move);
   // Bumped by "Try again" so the same filters load again
   const [attempt, setAttempt] = useState(0);
   const [state, setState] = useState<SearchState>({ status: 'loading' });

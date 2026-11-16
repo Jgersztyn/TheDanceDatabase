@@ -28,12 +28,12 @@ Run `npm install` once, then:
 
 [React Router](https://reactrouter.com) serves every page inside a shared layout (`src/layout/SiteLayout.tsx`) with a sticky navigation toolbar. The theme is dark only, and its palette is a set of CSS custom properties at the top of `src/index.css`.
 
-| Route     | Page         | What it shows                                                                                      |
-| --------- | ------------ | -------------------------------------------------------------------------------------------------- |
-| `/`       | Home         | A welcome, how the site works and a link to the search                                             |
-| `/search` | Dance Search | Style, category and move-name filters that apply as you change them, with results grouped by style |
-| `/about`  | About        | What the site is and how its data is organised (style, then category, then move)                   |
-| any other | Not found    | A 404 message with a link home                                                                     |
+| Route     | Page         | What it shows                                                                                                                                                      |
+| --------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `/`       | Home         | A welcome, how the site works and a link to the search                                                                                                             |
+| `/search` | Dance Search | Style, category and move-name filters that apply as you change them, with results grouped by style. `?style=&category=&move=` in the URL sets the starting filters |
+| `/about`  | About        | What the site is and how its data is organised (style, then category, then move). Each example links to Dance Search, filtered to it                               |
+| any other | Not found    | A 404 message with a link home                                                                                                                                     |
 
 ## Configuration
 
