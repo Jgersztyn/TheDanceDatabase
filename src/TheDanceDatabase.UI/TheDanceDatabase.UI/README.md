@@ -24,6 +24,21 @@ Run `npm install` once, then:
 | `npm run format`       | Format every file with Prettier                     |
 | `npm run format:check` | Report files Prettier would change (use this in CI) |
 
+## Pages
+
+[React Router](https://reactrouter.com) serves every page inside a shared layout (`src/layout/SiteLayout.tsx`) with a sticky navigation toolbar. The theme is dark only, and its palette is a set of CSS custom properties at the top of `src/index.css`.
+
+| Route     | Page         | What it shows                                                                                      |
+| --------- | ------------ | -------------------------------------------------------------------------------------------------- |
+| `/`       | Home         | A welcome, how the site works and a link to the search                                             |
+| `/search` | Dance Search | Style, category and move-name filters that apply as you change them, with results grouped by style |
+| `/about`  | About        | What the site is and how its data is organised (style, then category, then move)                   |
+| any other | Not found    | A 404 message with a link home                                                                     |
+
+## Configuration
+
+The Dance Search page calls the API at `VITE_API_BASE_URL`, which defaults to `http://localhost:5185`. That default suits both `npm run dev` and Docker Compose. To point elsewhere, set it in a git-ignored `.env.local` (for example `VITE_API_BASE_URL=http://localhost:5000`) or in the environment. Vite bakes the value in at build time. The API calls and their types live in `src/api/danceTypes.ts`.
+
 ## Linting and formatting
 
 - **ESLint** (`eslint.config.js`) checks `.ts`/`.tsx` files with the recommended rules from `@eslint/js`, `typescript-eslint`, `eslint-plugin-react-hooks` and `eslint-plugin-react-refresh`. `eslint-config-prettier` is the last entry so ESLint never reports formatting; keep it last when adding configs.

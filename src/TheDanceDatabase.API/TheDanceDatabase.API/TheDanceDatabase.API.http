@@ -5,6 +5,11 @@ Accept: application/json
 
 ###
 
+GET {{HostAddress}}/dance-types/search?style=Hip%20Hop&category=Foot%20Work
+Accept: application/json
+
+###
+
 GET {{HostAddress}}/health-check
 
 ###

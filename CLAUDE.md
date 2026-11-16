@@ -38,6 +38,8 @@ npm run format         # Prettier, rewrites files
 npm run format:check   # Prettier, reports only (the CI form)
 ```
 
+- **Pages:** React Router serves `/` (Home), `/search` (Dance Search) and `/about`, under a shared layout with a navigation toolbar at the top. The site uses a dark theme only.
+- **API URL:** the UI calls the API at `VITE_API_BASE_URL`, which defaults to `http://localhost:5185`. That default works for both `npm run dev` and Docker Compose.
 - **TypeScript only.** Source files are `.ts`/`.tsx`. The only JavaScript file is `eslint.config.js`.
 - **Linting is ESLint, not Oxlint.** create-vite defaults to Oxlint unless you pass `--eslint`. This project chose ESLint, so don't add Oxlint back. `eslint-config-prettier` must stay the last entry in `eslint.config.js`.
 - **Prettier owns formatting.** It is pinned to an exact version, and its settings are in `.prettierrc`. Before finishing a UI change, run `npm run format`, then `npm run lint` and `npm run build`.
@@ -45,7 +47,7 @@ npm run format:check   # Prettier, reports only (the CI form)
 - **VS Code settings** (format on save, ESLint fix on save) live in `src/TheDanceDatabase.UI/.vscode/`. They apply only when that container folder is opened as the workspace. `eslint.workingDirectories` is set to `auto`, so ESLint runs from the app folder.
 - **Component tests use Vitest and React Testing Library.** The tests go in `TheDanceDatabase.UI.ComponentTests/`, which holds only an empty `App.test.ts` for now. The app has these packages as dev dependencies: `vitest`, `@testing-library/react`, `@testing-library/dom`, `@testing-library/jest-dom` and `jsdom`.
   - **Not wired up yet:** there is no Vitest config, no `test` script and no real test. The test folder has no lint, format or type-check setup, and it is left out of the Docker build context.
-  - **When you wire it up:** the tests sit outside the app folder, so the Vitest config needs `server.fs.allow: ['..']`. It also needs `resolve.dedupe`, listing `react`, `react-dom`, `@testing-library/react`, `@testing-library/jest-dom` and `vitest`. Without both, the test file isn't loaded, and its bare imports don't resolve to the app's `node_modules`. A throwaway RTL test of `App` passed with that config, along with `environment: 'jsdom'` and the React plugin (checked 2026-10-23).
+  - **When you wire it up:** the tests sit outside the app folder, so the Vitest config needs `server.fs.allow: ['..']`. It also needs `resolve.dedupe`, listing `react`, `react-dom`, `react-router`, `@testing-library/react`, `@testing-library/jest-dom` and `vitest`. Without both, the test file isn't loaded, and its bare imports don't resolve to the app's `node_modules`. A throwaway RTL test of `App` passed with that config, along with `environment: 'jsdom'` and the React plugin (checked 2026-10-23, before routing was added). `App` now renders `<Routes>`, so a test must wrap it in a `MemoryRouter`.
   - **Then** add the `test` script, and update this file and the app README.
 
 ## API (`src/TheDanceDatabase.API`)
@@ -62,6 +64,10 @@ dotnet test --solution TheDanceDatabase.API.slnx
   - `Domain/` holds entities, enums and `Configuration/` POCOs.
   - `Infrastructure/` holds the implementations of the `Application` interfaces.
   - `Presentation/` holds `Endpoints.cs` (route mapping) and the `Functions` static class (handler bodies).
+- **Endpoints:**
+  - `GET /dance-types` returns every style as a tree: style, then categories, then moves.
+  - `GET /dance-types/search?style=&category=&move=` returns the same tree, filtered. `style` and `category` must match a name exactly, ignoring case. `move` matches part of a move's name.
+- **Mock data:** both endpoints read `Infrastructure/MockData/dance-moves.json`, which is compiled in as an embedded resource. There is no database yet.
 - **Package versions** are managed centrally in `Directory.Packages.props`. Project files reference packages without a version.
 - **Machine-specific settings** go in `appsettings.Local.json`. It is git-ignored, never copied to build or publish output, kept out of the Docker build context, and read only in Development.
 

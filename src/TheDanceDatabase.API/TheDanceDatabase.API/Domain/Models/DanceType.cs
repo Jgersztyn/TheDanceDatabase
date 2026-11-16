@@ -1,10 +1,7 @@
-using TheDanceDatabase.API.Domain.Enums;
-
 namespace TheDanceDatabase.API.Domain.Models;
 
-/// <summary>A style of dance, such as Swing or Salsa.</summary>
+/// <summary>A style of dance, such as Shuffling or Hip Hop, grouped into categories of moves.</summary>
 public record DanceType(
     int Id,
     string Name,
-    DanceCategory Category,
-    string Description);
+    IReadOnlyList<DanceCategory> Categories);

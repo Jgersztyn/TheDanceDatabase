@@ -9,6 +9,12 @@
     <Content Update="appsettings.Local.json" CopyToOutputDirectory="Never" CopyToPublishDirectory="Never" />
   </ItemGroup>
 
+  <!-- Embedded so the mock data ships inside the assembly rather than as a loose file in the output -->
+  <ItemGroup>
+    <Content Remove="Infrastructure\MockData\dance-moves.json" />
+    <EmbeddedResource Include="Infrastructure\MockData\dance-moves.json" LogicalName="dance-moves.json" />
+  </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" />
     <PackageReference Include="Scalar.AspNetCore" />

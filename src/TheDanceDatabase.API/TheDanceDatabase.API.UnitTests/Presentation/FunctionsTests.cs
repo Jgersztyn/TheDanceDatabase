@@ -20,4 +20,15 @@ public class FunctionsTests : FunctionsTest
         // Assert
         result.Value.ShouldBe([FakeDanceTypeService.FakeDanceType]);
     }
+
+    [Fact]
+    public async Task SearchDanceTypes_ShouldReturnServiceResult_IfServiceReturnsDanceTypes()
+    {
+        await using var scope = Provider.CreateAsyncScope();
+        var danceTypeService = scope.ServiceProvider.GetRequiredService<IDanceTypeService>();
+
+        var result = await Functions.SearchDanceTypes(new DanceTypeSearchRequest { Style = "Fake" }, danceTypeService, TestContext.Current.CancellationToken);
+
+        result.Value.ShouldBe([FakeDanceTypeService.FakeSearchedDanceType]);
+    }
 }

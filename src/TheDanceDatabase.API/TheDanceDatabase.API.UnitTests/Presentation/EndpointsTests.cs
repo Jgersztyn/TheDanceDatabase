@@ -13,7 +13,7 @@ public class EndpointsTests : IClassFixture<TheDanceDatabaseApplicationFactory>
     }
 
     [Fact]
-    public async Task GettingDanceTypesReturnsSwingJazzAndSalsa()
+    public async Task GettingDanceTypesReturnsEveryStyleFromTheMockData()
     {
         // Act
         var json = await _client.GetStringAsync("dance-types", TestContext.Current.CancellationToken);
@@ -23,7 +23,20 @@ public class EndpointsTests : IClassFixture<TheDanceDatabaseApplicationFactory>
         var names = document.RootElement.EnumerateArray()
             .Select(x => x.GetProperty("name").GetString());
 
-        names.ShouldBe(["Swing", "Jazz", "Salsa"]);
+        names.ShouldBe(["Shuffling", "General Footwork", "Waacking", "Hip Hop", "Arms and Hands (General)", "B-boy/Floor Work", "Other Styles"]);
+    }
+
+    [Fact]
+    public async Task SearchingDanceTypesByStyleAndCategoryReturnsOnlyThatCategory()
+    {
+        var json = await _client.GetStringAsync("dance-types/search?style=Hip%20Hop&category=Upper%20Body", TestContext.Current.CancellationToken);
+
+        using var document = JsonDocument.Parse(json);
+        var styleAndCategoryNames = document.RootElement.EnumerateArray()
+            .SelectMany(style => style.GetProperty("categories").EnumerateArray()
+                .Select(category => $"{style.GetProperty("name").GetString()} > {category.GetProperty("name").GetString()}"));
+
+        styleAndCategoryNames.ShouldBe(["Hip Hop > Upper Body"]);
     }
 
     [Fact]
